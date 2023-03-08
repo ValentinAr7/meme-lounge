@@ -1,3 +1,5 @@
+import { clearUserData } from "../views/util.js";
+
 const host = 'http//localhost:3030'
 
 async function request(url, method, data) {
@@ -12,12 +14,17 @@ async function request(url, method, data) {
         options.body = JSON.stringify(data)
     }
 
+    const userData = getUserData()
+    if(userData){
+        options.headers['X-Authorization'] = userData.accessToken;
+    }
+
     try {
         const res = await fetch(host + url, options);
 
         if (res.ok == false) {
             if (res.status == 403) {
-                //TODO
+                clearUserData()
             }
             const error = await res.json();
             throw new Error(error.message)
