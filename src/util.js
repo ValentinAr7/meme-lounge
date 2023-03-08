@@ -1,9 +1,10 @@
 export function getUserData(){
-    return JSON.parse(sessionStorage.getItem('userData'))
+    const data = sessionStorage.getItem('userData')
+    return data;
 }
 
 export function setUserData(data){
-    sessionStorage.setItem(JSON.stringify(data))
+    sessionStorage.setItem('userData', JSON.stringify(data))
 }
 
 export function clearUserData(){
