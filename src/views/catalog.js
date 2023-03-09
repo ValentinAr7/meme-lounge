@@ -1,5 +1,5 @@
 import { getAllMemes } from '../api/memes.js'
-import { html } from '../lib.js'
+import { html, } from '../lib.js'
 
 
 const catalogTemplate = (memes) => html`
@@ -19,11 +19,11 @@ const memeCard = (meme) => html`
     <div class="meme">
         <div class="card">
             <div class="info">
-                <p class="meme-title">Debugging</p>
-                <img class="meme-image" alt="meme-img" src="/images/2.png">
+                <p class="meme-title">${meme.title}</p>
+                <img class="meme-image" alt="meme-img" src=${meme.imageUrl}>
             </div>
             <div id="data-buttons">
-                <a class="button" href="#">Details</a>
+                <a class="button" href="/memes/${meme._id}">Details</a>
             </div>
         </div>
     </div>

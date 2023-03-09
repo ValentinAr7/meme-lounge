@@ -1,7 +1,6 @@
 // Get the user data from the session storage
 export function getUserData(){
-    const data = sessionStorage.getItem('userData')
-    return data;
+    return JSON.parse(sessionStorage.getItem('userData'))
 }
 
 // Set the user data in the session storage
