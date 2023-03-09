@@ -18,7 +18,7 @@ page('/memes/:id', () => console.log('details'));
 page('/edit/:id', () => console.log('edi'));
 page('/login', loginView);
 page('/register',registerView);
-page('/create', () => createView);
+page('/create', createView);
 page('/profile', () => console.log('profile'));
 
 updateNav()

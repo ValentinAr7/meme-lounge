@@ -1,9 +1,9 @@
 import { html } from '../lib.js'
 
 
-const createTemplate = () => html `
+const createTemplate = (onSubmit) => html `
 <section id="create-meme">
-<form id="create-form">
+<form @submit=${onSubmit}id="create-form">
     <div class="container">
         <h1>Create Meme</h1>
         <label for="title">Title</label>
@@ -21,5 +21,21 @@ const createTemplate = () => html `
 export function createView(ctx){
 
         ctx.render(createTemplate())
+
+        async function onSubmit(event){
+            event.preventDefault();
+            const formData = new FormData(event.target)
+
+            const meme = {
+                title: formData.get('title'),
+                description: formData.get('description'),
+                imageUrl: formData.get('imageUrl ')
+            }
+
+            if(meme.title == '' || meme.description == '' || meme.imageUrl == ''){
+                return alert ('All fields are requiered')
+            }
+            
+        }
     
 }
