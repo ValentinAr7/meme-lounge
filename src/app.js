@@ -1,9 +1,10 @@
 import { page, render } from './lib.js'
+import { homeView } from './views/home.js';
 
 const main = document.querySelector('main')
 
 page(decorateContext);
-page('/', () => console.log('home'));
+page('/', homeView);
 page('/memes', () => console.log('catalog'));
 page('/memes/:id', () => console.log('details'));
 page('/edit/:id', () => console.log('edi'));
@@ -22,5 +23,5 @@ function decorateContext(ctx, next) {
 }
 
 function renderMain(templateResult) {
-
+    render(templateResult, main)
 }
