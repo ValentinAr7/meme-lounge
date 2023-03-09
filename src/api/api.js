@@ -32,7 +32,7 @@ async function request(url, method, data) {
             if (res.status == 403) {                // If the response status is 403 (Forbidden), clear the user data from the session storage.
                 clearUserData()
             }
-            const error = await res.join()
+            const error = await res.json()
             throw new Error(error.message)
         }
 
@@ -53,14 +53,14 @@ export async function get(url) {
     return request(url, 'get')
 }
 
-export async function post(url) {
+export async function post(url, data) {
     return request(url, 'post', data)
 }
 
-export async function put(url) {
+export async function put(url, data) {
     return request(url, 'put', data)
 }
 
 export async function del(url) {
-    return request(url, 'delete', data)
+    return request(url, 'delete')
 }
