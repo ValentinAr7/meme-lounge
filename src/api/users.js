@@ -15,7 +15,7 @@ export async function login(email, password){
     setUserData(userData)
 
     return result
-}
+} 
 
 
 export async function register(username, email, password, gender){
