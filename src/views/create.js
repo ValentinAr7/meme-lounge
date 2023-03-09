@@ -2,7 +2,7 @@ import { createMeme } from '../api/memes.js';
 import { html } from '../lib.js'
 
 
-const createTemplate = (onSubmit) => html `
+const createTemplate = (onSubmit) => html`
 <section id="create-meme">
 <form @submit=${onSubmit}id="create-form">
     <div class="container">
@@ -19,28 +19,28 @@ const createTemplate = (onSubmit) => html `
 </section>
 `
 
-export function createView(ctx){
+export function createView(ctx) {
 
-        ctx.render(createTemplate())
+    ctx.render(createTemplate(onSubmit))
 
-        async function onSubmit(event){
-            event.preventDefault();
-            const formData = new FormData(event.target)
+    async function onSubmit(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target)
 
-            const meme = {
-                title: formData.get('title'),
-                description: formData.get('description'),
-                imageUrl: formData.get('imageUrl ')
-            }
-
-            if(meme.title == '' || meme.description == '' || meme.imageUrl == ''){
-                return alert ('All fields are requiered')
-            }
-            
-
-            await createMeme(meme)
-            event.target.reset()
-            ctx.page.redirect('/memes')
+        const meme = {
+            title: formData.get('title'),
+            description: formData.get('description'),
+            imageUrl: formData.get('imageUrl ')
         }
-    
+
+        if (meme.title == '' || meme.description == '' || meme.imageUrl == '') {
+            return alert('All fields are requiered')
+        }
+
+
+        await createMeme(meme)
+        event.target.reset()
+        ctx.page.redirect('/memes')
+    }
+
 }
