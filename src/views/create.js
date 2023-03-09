@@ -1,3 +1,4 @@
+import { createMeme } from '../api/memes.js';
 import { html } from '../lib.js'
 
 
@@ -36,6 +37,10 @@ export function createView(ctx){
                 return alert ('All fields are requiered')
             }
             
+
+            await createMeme(meme)
+            event.target.reset()
+            ctx.page.redirect('/memes')
         }
     
 }
