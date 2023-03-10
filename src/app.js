@@ -8,6 +8,7 @@ import { editView } from './views/edit.js';
 import { homeView } from './views/home.js';
 import { loginView } from './views/login.js';
 import { registerView } from './views/register.js';
+import { profileView } from './views/viewProfile.js';
 
 const main = document.querySelector('main')
 document.getElementById('logoutBtn').addEventListener('click', onLogout)
@@ -21,7 +22,7 @@ page('/edit/:id', editView);
 page('/login', loginView);
 page('/register',registerView);
 page('/create', createView);
-page('/profile', () => console.log('profile'));
+page('/profile', profileView);
 
 updateNav()
 page.start()
