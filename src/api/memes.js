@@ -7,3 +7,7 @@ export async function  getAllMemes(){
 export async function createMeme(meme){
     return post('/data/memes', meme)
 }
+
+export async function getMemeById(id){
+    return get('/data/memes/' + id)
+}

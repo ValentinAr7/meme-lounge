@@ -30,7 +30,7 @@ export function createView(ctx) {
         const meme = {
             title: formData.get('title'),
             description: formData.get('description'),
-            imageUrl: formData.get('imageUrl ')
+            imageUrl: formData.get('imageUrl')
         }
 
         if (meme.title == '' || meme.description == '' || meme.imageUrl == '') {
