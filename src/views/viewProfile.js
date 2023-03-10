@@ -1,5 +1,6 @@
-import { getAllMemes } from '../api/memes.js'
+import { getAllMemes, getMemesByUser } from '../api/memes.js'
 import { html, } from '../lib.js'
+import { getUserData } from '../util.js'
 
 
 const profileTemplate = (memes) => html`
@@ -20,13 +21,15 @@ const profileTemplate = (memes) => html`
 </section>
 `
 
-const memeCard = (meme) => html` <div class="user-meme">
-<p class="user-meme-title">Bad code can present some problems</p>
-<img class="userProfileImage" alt="meme-img" src="/images/3.png">
-<a class="button" href="#">Details</a>
+const memeCard = (meme) => html` 
+<div class="user-meme">
+<p class="user-meme-title">${meme.title}</p>
+<img class="userProfileImage" alt="meme-img" src=${meme.imageUrl}>
+<a class="button" href="/memes/${meme._id}">Details</a>
 </div>`
 
 export async function profileView(ctx) {
-    const memes = 
+    const userData = getUserData()
+    const memes = await getMemesByUser(userData.id)
     ctx.render(profileTemplate(memes))
 }
