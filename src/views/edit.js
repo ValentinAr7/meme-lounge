@@ -1,5 +1,6 @@
 import { getMemeById, updateMeme } from '../api/memes.js';
 import { html } from '../lib.js'
+import { notify } from '../notify.js';
 
 
 const editTemplate = (meme, onSubmit) => html`
@@ -41,7 +42,7 @@ export async function editView(ctx) {
         }
 
         if (meme.title == '' || meme.description == '' || meme.imageUrl == '') {
-            return alert('All fields are requiered')
+            return notify('All fields are requiered')
         }
 
 
