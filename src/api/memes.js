@@ -1,4 +1,4 @@
-import { get, post, del } from './api.js'
+import { get, post, del, put } from './api.js'
 
 export async function  getAllMemes(){
     return get('/data/memes?sortBy=_createdOn%20desc')
@@ -14,4 +14,8 @@ export async function getMemeById(id){
 
 export async function deleteMeme(id){
     return del('/data/memes/' + id)
+}
+
+export async function updateMeme(id, meme){
+    return put('/data/memes' + id, meme)
 }
