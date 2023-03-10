@@ -1,10 +1,10 @@
-import { createMeme, getMemeById, updateMeme } from '../api/memes.js';
+import { getMemeById, updateMeme } from '../api/memes.js';
 import { html } from '../lib.js'
 
 
 const editTemplate = (meme, onSubmit) => html`
 <section id="edit-meme">
-<form @click=${onSubmit}id="edit-form">
+<form @submit=${onSubmit} id="edit-form">
     <h1>Edit Meme</h1>
     <div class="container">
         <label for="title">Title</label>
@@ -27,8 +27,8 @@ const editTemplate = (meme, onSubmit) => html`
 `
 
 export async function editView(ctx) {
-    const meme = getMemeById(ctx.params.id)
-    ctx.render(editTemplate(onSubmit))
+    const meme = await getMemeById(ctx.params.id)
+    ctx.render(editTemplate(meme, onSubmit))
 
     async function onSubmit(event) {
         event.preventDefault();

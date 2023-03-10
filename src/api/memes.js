@@ -17,5 +17,5 @@ export async function deleteMeme(id){
 }
 
 export async function updateMeme(id, meme){
-    return put('/data/memes' + id, meme)
+    return put('/data/memes/' + id, meme)
 }
