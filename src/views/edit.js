@@ -1,4 +1,4 @@
-import { createMeme, getMemeById } from '../api/memes.js';
+import { createMeme, getMemeById, updateMeme } from '../api/memes.js';
 import { html } from '../lib.js'
 
 
@@ -45,9 +45,9 @@ export async function editView(ctx) {
         }
 
 
-        await createMeme(meme)
+        await updateMeme(ctx.params.id, meme)
         event.target.reset()
-        ctx.page.redirect('/memes')
+        ctx.page.redirect('/memes/' + ctx.params.id)
     }
 
 }
