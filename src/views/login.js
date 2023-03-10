@@ -3,7 +3,7 @@ import { login } from '../api/users.js'
 import { notify } from '../notify.js'
 
 
-const loginTemplate = (onSubmit) => html `
+const loginTemplate = (onSubmit) => html`
 <section id="login">
 <form @submit=${onSubmit} id="login-form">
     <div class="container">
@@ -20,22 +20,22 @@ const loginTemplate = (onSubmit) => html `
 </form>
 </section>`
 
-export function loginView(ctx){
+export function loginView(ctx) {
     ctx.render(loginTemplate(onSubmit))
- 
-    async function onSubmit(event){
-         event.preventDefault()
-         const formData = new FormData(event.target);
 
-         const email = formData.get('email').trim();
-         const password = formData.get('password').trim();
+    async function onSubmit(event) {
+        event.preventDefault()
+        const formData = new FormData(event.target);
 
-         if(email == '' || password == '') {
+        const email = formData.get('email').trim();
+        const password = formData.get('password').trim();
+
+        if (email == '' || password == '') {
             return notify('All fields are requiered!');
-         }
+        }
 
-         await login (email, password);
-         ctx.updateNav()
-         ctx.page.redirect('/memes')
+        await login(email, password);
+        ctx.updateNav()
+        ctx.page.redirect('/memes')
     }
 }

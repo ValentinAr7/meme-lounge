@@ -2,7 +2,7 @@ import { html } from '../lib.js'
 import { getUserData } from '../util.js'
 
 
-const homeTemplate = () => html `
+const homeTemplate = () => html`
 <section id="welcome">
 <div id="welcome-container">
     <h1>Welcome To Meme Lounge</h1>
@@ -15,10 +15,10 @@ const homeTemplate = () => html `
 </div>
 </section>`
 
-export function homeView(ctx){
-    if(getUserData()){
+export function homeView(ctx) {
+    if (getUserData()) {
         ctx.page.redirect('/memes')
-    }else {
+    } else {
         ctx.render(homeTemplate())
     }
 }

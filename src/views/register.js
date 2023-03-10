@@ -2,9 +2,9 @@ import { html } from '../lib.js'
 import { register } from '../api/users.js'
 import { notify } from '../notify.js'
 
-const registerTemplate = (onSubmit) => html `
+const registerTemplate = (onSubmit) => html`
 <section id="register">
-<form @submit=${onSubmit }id="register-form">
+<form @submit=${onSubmit}id="register-form">
     <div class="container">
         <h1>Register</h1>
         <label for="username">Username</label>
@@ -30,30 +30,30 @@ const registerTemplate = (onSubmit) => html `
 </section>
 `
 
-export function registerView(ctx){
+export function registerView(ctx) {
     ctx.render(registerTemplate(onSubmit))
- 
-    async function onSubmit(event){
-         event.preventDefault()
-         const formData = new FormData(event.target);
 
-         const email = formData.get('email').trim();
-         const password = formData.get('password').trim();
-         const repass = formData.get('repeatPass').trim();
-         const gender = formData.get('gender')
-         const username = formData.get('username').trim();
+    async function onSubmit(event) {
+        event.preventDefault()
+        const formData = new FormData(event.target);
+
+        const email = formData.get('email').trim();
+        const password = formData.get('password').trim();
+        const repass = formData.get('repeatPass').trim();
+        const gender = formData.get('gender')
+        const username = formData.get('username').trim();
 
 
-         if(username == '' || email == '' || password == '') {
+        if (username == '' || email == '' || password == '') {
             return notify('All fields are requiered!');
-         }
+        }
 
-         if(password != repass){
+        if (password != repass) {
             return notify('Password do not match')
-         }
+        }
 
-         await register (email, password, repass, username);
-         ctx.updateNav()
-         ctx.page.redirect('/memes')
+        await register(email, password, repass, username);
+        ctx.updateNav()
+        ctx.page.redirect('/memes')
     }
 }

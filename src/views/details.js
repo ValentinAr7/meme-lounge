@@ -17,7 +17,7 @@ const detailsTemplate = (meme, isOwner, onDelete) => html`
         ${meme.description}
         </p>
 
-        ${isOwner ? html `        <!-- Buttons Edit/Delete should be displayed only for creator of this meme  -->
+        ${isOwner ? html`        <!-- Buttons Edit/Delete should be displayed only for creator of this meme  -->
         <a class="button warning" href="/edit/${meme._id}">Edit</a>
         <button  @click=${onDelete}class="button danger">Delete</button>` : ''}
 
@@ -33,10 +33,10 @@ export async function detailsView(ctx) {
     const isOwner = userData?.id == meme._ownerId;
     ctx.render(detailsTemplate(meme, isOwner, onDelete))
 
-    async function onDelete(){
+    async function onDelete() {
         const choice = confirm('Are you sure you want to delete this meme')
 
-        if(choice){
+        if (choice) {
             await deleteMeme(ctx.params.id)
             ctx.page.redirect('/memes')
         }

@@ -20,7 +20,7 @@ page('/memes', catalogView);
 page('/memes/:id', detailsView);
 page('/edit/:id', editView);
 page('/login', loginView);
-page('/register',registerView);
+page('/register', registerView);
 page('/create', createView);
 page('/profile', profileView);
 
@@ -38,9 +38,9 @@ function renderMain(templateResult) {
     render(templateResult, main)
 }
 
-function updateNav(){
-    const userData =  getUserData()
-    if(userData){
+function updateNav() {
+    const userData = getUserData()
+    if (userData) {
         document.querySelector('.user').style.display = 'block';
         document.querySelector('.guest').style.display = 'none';
         document.querySelector('.user span').textContent = `Welcome, ${userData.email}`
@@ -50,7 +50,7 @@ function updateNav(){
     }
 }
 
-function onLogout(){
+function onLogout() {
     logout()
     updateNav()
     page.redirect('/')
