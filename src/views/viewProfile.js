@@ -1,9 +1,9 @@
 import { getAllMemes, getMemesByUser } from '../api/memes.js'
-import { html, } from '../lib.js'
+import { html } from '../lib.js'
 import { getUserData } from '../util.js'
 
 
-const profileTemplate = (memes) => html`
+const profileTemplate = (memes, userData) => html`
 <!-- Profile Page ( Only for logged users ) -->
 <section id="user-profile-page" class="user-profile">
     <article class="user-info">
@@ -31,5 +31,5 @@ const memeCard = (meme) => html`
 export async function profileView(ctx) {
     const userData = getUserData()
     const memes = await getMemesByUser(userData.id)
-    ctx.render(profileTemplate(userData, memes))
+    ctx.render(profileTemplate(memes, userData))
 }
