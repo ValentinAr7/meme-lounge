@@ -1,22 +1,19 @@
-import { getAllMemes } from '../api/memes.js'
+import { getAllMemes, getMemeById } from '../api/memes.js'
 import { html, } from '../lib.js'
 
 
-const detailsTemplate = (memes) => html`
+const detailsTemplate = (meme) => html`
 <section id="meme-details">
-<h1>Meme Title: Bad code can present some problems
-
+<h1>Meme Title: ${meme.title}
 </h1>
 <div class="meme-details">
     <div class="meme-img">
-        <img alt="meme-alt" src="/images/3.png">
+        <img alt="meme-alt" src=${meme.imageUrl}>
     </div>
     <div class="meme-description">
         <h2>Meme Description</h2>
         <p>
-            Being a programmer is a fun job. And many funny incidents occur throughout a
-            programmer’s career.
-            Here are a few jokes that can be relatable to you as a programmer.
+        ${meme.description}
         </p>
 
         <!-- Buttons Edit/Delete should be displayed only for creator of this meme  -->
@@ -29,7 +26,6 @@ const detailsTemplate = (memes) => html`
 `
 
 export async function detailsView(ctx) {
-    const memes = await getAllMemes()
-
-    ctx.render(detailsTemplate(memes))
+    const meme = await getMemeById(ctx.params.id)
+    ctx.render(detailsTemplate(meme))
 }
