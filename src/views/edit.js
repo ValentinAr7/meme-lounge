@@ -34,20 +34,20 @@ export async function editView(ctx) {
         event.preventDefault();
         const formData = new FormData(event.target)
 
-    //     const meme = {
-    //         title: formData.get('title'),
-    //         description: formData.get('description'),
-    //         imageUrl: formData.get('imageUrl')
-    //     }
+        const meme = {
+            title: formData.get('title'),
+            description: formData.get('description'),
+            imageUrl: formData.get('imageUrl')
+        }
 
-    //     if (meme.title == '' || meme.description == '' || meme.imageUrl == '') {
-    //         return alert('All fields are requiered')
-    //     }
+        if (meme.title == '' || meme.description == '' || meme.imageUrl == '') {
+            return alert('All fields are requiered')
+        }
 
 
-    //     await createMeme(meme)
-    //     event.target.reset()
-    //     ctx.page.redirect('/memes')
+        await createMeme(meme)
+        event.target.reset()
+        ctx.page.redirect('/memes')
     }
 
 }
