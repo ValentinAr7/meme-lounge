@@ -1,4 +1,4 @@
-import { deleteMeme, getAllMemes, getMemeById } from '../api/memes.js'
+import { deleteMeme, getMemeById } from '../api/memes.js'
 import { html, } from '../lib.js'
 import { getUserData } from '../util.js'
 
