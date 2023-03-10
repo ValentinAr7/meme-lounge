@@ -1,5 +1,6 @@
 import { createMeme } from '../api/memes.js';
 import { html } from '../lib.js'
+import { notify } from '../notify.js';
 
 
 const createTemplate = (onSubmit) => html`
@@ -34,7 +35,7 @@ export function createView(ctx) {
         }
 
         if (meme.title == '' || meme.description == '' || meme.imageUrl == '') {
-            return alert('All fields are requiered')
+            return notify('All fields are requiered')
         }
 
 
