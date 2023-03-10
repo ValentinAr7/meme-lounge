@@ -8,9 +8,9 @@ const editTemplate = (meme, onSubmit) => html`
     <h1>Edit Meme</h1>
     <div class="container">
         <label for="title">Title</label>
-        <input id="title" type="text" placeholder="Enter Title" name="title .value=${meme.title}">
+        <input id="title" type="text" placeholder="Enter Title" name="title" .value=${meme.title}>
         <label for="description">Description</label>
-        <textarea id="description" placeholder="Enter Description" name="description .value=${meme.description}">
+        <textarea id="description" placeholder="Enter Description" name="description" .value=${meme.description}">
                 Programming is often touted as a smart and lucrative career path.
                 It's a job that (sometimes) offers flexibility and great benefits.
                 But it's far from sunshine and Nyan Cat rainbows. The hours are long.
