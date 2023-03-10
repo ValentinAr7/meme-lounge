@@ -1,5 +1,7 @@
 import { html } from '../lib.js'
 import { login } from '../api/users.js'
+import { notify } from '../notify.js'
+
 
 const loginTemplate = (onSubmit) => html `
 <section id="login">
@@ -29,7 +31,7 @@ export function loginView(ctx){
          const password = formData.get('password').trim();
 
          if(email == '' || password == '') {
-            return alert('All fields are requiered!');
+            return notify('All fields are requiered!');
          }
 
          await login (email, password);
